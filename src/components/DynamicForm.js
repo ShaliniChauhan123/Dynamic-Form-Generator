@@ -4,7 +4,6 @@ import { useForm } from "@mantine/form";
 import { addField, removeField, updateField } from "../reducers/formReducer";
 import clsx from "clsx";
 import CustomDropdown from "./CustomDropdown";
-import CustomCheckboxGroup from "./CustomCheckboxGroup";
 import FallBack from "../assets/icons/fallback";
 
 const DynamicForm = () => {
