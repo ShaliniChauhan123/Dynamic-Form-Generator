@@ -18,9 +18,13 @@ const formSlice = createSlice({
       console.log("action", action.payload);
       state.fields[index][name] = value;
     },
+    resetFields(state) {
+      state.fields = [];
+    },
   },
 });
 
-export const { addField, removeField, updateField } = formSlice.actions;
+export const { addField, removeField, updateField, resetFields } =
+  formSlice.actions;
 
 export default formSlice.reducer;

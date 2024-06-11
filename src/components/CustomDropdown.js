@@ -13,7 +13,7 @@ const CustomDropdown = ({ options, newItem, onNewItemChange, onAddItem }) => {
   return (
     <div className="flex">
       <select
-        className="border px-2 py-1 mr-2"
+        className="border px-2 py-1"
         value={newItem}
         onChange={(e) => {
           handleSelectChange(e);
