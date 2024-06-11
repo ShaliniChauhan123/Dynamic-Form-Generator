@@ -346,7 +346,7 @@ const DynamicForm = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen">
+    <div className="flex flex-col lg:flex-row lg:h-screen">
       <div className="lg:w-1/3 w-full flex flex-col border-r p-4 h-full bg-white">
         <button
           onClick={() => handleAddField("text")}
@@ -409,7 +409,7 @@ const DynamicForm = () => {
                       placeholder="Label"
                       value={field.label}
                       onChange={(e) => handleLabelChange(index, e)}
-                      className="border rounded p-2"
+                      className="rounded p-2"
                     />
                     {form.errors?.fields?.[index]?.label && (
                       <div className="text-red-500">
@@ -440,7 +440,10 @@ const DynamicForm = () => {
             </form>
           </div>
         ) : (
-          <div className="flex justify-center items-center w-full h-full">
+          <div className="flex lg:flex-col flex-wrap justify-center items-center w-full h-full">
+            <div className="pb-4 text-base font-bold">
+              Create your Dynamic Form
+            </div>
             <FallBack />
           </div>
         )}
