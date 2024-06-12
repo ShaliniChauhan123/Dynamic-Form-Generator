@@ -1,7 +1,9 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+
+import { FIELD_TYPES } from "../config";
 import CustomDropdown from "./CustomDropdown";
 import { updateField } from "../reducers/formReducer";
-import { useDispatch } from "react-redux";
 
 const RenderField = (
   field,
@@ -17,7 +19,7 @@ const RenderField = (
   const dispatch = useDispatch();
 
   switch (field.type) {
-    case "text":
+    case FIELD_TYPES.TEXT:
       return (
         <div>
           <input
@@ -35,7 +37,7 @@ const RenderField = (
           )}
         </div>
       );
-    case "textarea":
+    case FIELD_TYPES.TEXTAREA:
       return (
         <div>
           <textarea
@@ -52,7 +54,7 @@ const RenderField = (
           )}
         </div>
       );
-    case "dropdown":
+    case FIELD_TYPES.DROPDOWN:
       return (
         <div>
           <CustomDropdown
@@ -74,7 +76,7 @@ const RenderField = (
           />
         </div>
       );
-    case "checkbox":
+    case FIELD_TYPES.CHECKBOX:
       return (
         <div>
           <div
@@ -141,7 +143,7 @@ const RenderField = (
           )}
         </div>
       );
-    case "file":
+    case FIELD_TYPES.FILE:
       return (
         <div>
           <input
@@ -158,7 +160,7 @@ const RenderField = (
           )}
         </div>
       );
-    case "radio":
+    case FIELD_TYPES.RADIO:
       return (
         <div>
           <div

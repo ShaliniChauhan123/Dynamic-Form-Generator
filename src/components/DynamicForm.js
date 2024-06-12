@@ -43,20 +43,22 @@ const DynamicForm = () => {
                 fieldErrors.newCheckbox = checkboxErrors;
               }
             }
-          } else if (!field.value) {
+          } else if (!field.value && field.type === "text") {
             fieldErrors.value = "Value is required";
           }
           if (Object.keys(fieldErrors).length > 0) {
             errors[index] = fieldErrors;
           }
-          if (!field.newRadio || field.newRadio.length === 0) {
-            fieldErrors.value = "All radio button labels are required";
-          } else {
-            const radioErrors = field.newRadio.map((label) =>
-              !label ? "Radio button label is required" : null
-            );
-            if (radioErrors.some((error) => error !== null)) {
-              fieldErrors.newRadio = radioErrors;
+          if (field.type === "radio") {
+            if (!field.newRadio || field.newRadio.length === 0) {
+              fieldErrors.value = "All radio button labels are required";
+            } else {
+              const radioErrors = field.newRadio.map((label) =>
+                !label ? "Radio button label is required" : null
+              );
+              if (radioErrors.some((error) => error !== null)) {
+                fieldErrors.newRadio = radioErrors;
+              }
             }
           }
         });
@@ -81,7 +83,7 @@ const DynamicForm = () => {
         type,
         label: "",
         value: type === "checkbox" ? [] : "",
-        options: type === "dropdown" ? [] : [],
+        options: [],
       })
     );
   };
@@ -102,32 +104,26 @@ const DynamicForm = () => {
 
   const handleFileChange = (index, event) => {
     const file = event.target.files[0].name;
-    console.log("file", event.target.files[0].name);
     dispatch(updateField({ index, name: "value", value: file }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Form submission initiated");
 
     // Validate the form
     const validationResults = form.validate();
-    console.log("Validation errors:", validationResults);
 
     // Check if there are any errors
     if (Object.keys(form.errors).length > 0) {
-      console.log("Form is not valid, submission halted");
       return;
     }
-    console.log(validationResults.errors.fields);
 
     // No errors, proceed with form submission
     if (
       validationResults.errors.fields &&
       Object.keys(validationResults.errors.fields).length === 0
     ) {
-      console.log("Form Data:", fields);
-      alert(JSON.stringify(fields, null, 2));
+      alert(JSON.stringify(fields, null));
       dispatch(resetFields());
     }
   };

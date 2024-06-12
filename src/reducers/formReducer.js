@@ -15,7 +15,6 @@ const formSlice = createSlice({
     },
     updateField: (state, action) => {
       const { index, name, value } = action.payload;
-      console.log("action", action.payload);
       state.fields[index][name] = value;
     },
     resetFields(state) {
