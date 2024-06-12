@@ -11,12 +11,13 @@ import {
 } from "../reducers/formReducer";
 import LeftPanel from "./LeftPanel";
 import CustomForm from "./CustomForm";
+import SubmittedDataTable from "./SubmittedDataTable";
 
 const DynamicForm = () => {
   const fields = useSelector((state) => state.form.fields);
   const dispatch = useDispatch();
   const [checkboxCount, setCheckboxCount] = useState(1);
-
+  const [submittedData, setSubmittedData] = useState(null);
   const [radioCount, setRadioCount] = useState(1);
 
   const form = useForm({
@@ -123,8 +124,14 @@ const DynamicForm = () => {
       validationResults.errors.fields &&
       Object.keys(validationResults.errors.fields).length === 0
     ) {
-      alert(JSON.stringify(fields, null));
-      dispatch(resetFields());
+      alert(
+        JSON.stringify(
+          "Submitted, please check submitted data and you can edit that data from editing form section and again submit",
+          null
+        )
+      );
+      setSubmittedData(fields);
+      // dispatch(resetFields());
     }
   };
 
@@ -153,6 +160,7 @@ const DynamicForm = () => {
             <FallBack />
           </div>
         )}
+        {submittedData && <SubmittedDataTable data={submittedData} />}
       </div>
     </div>
   );
