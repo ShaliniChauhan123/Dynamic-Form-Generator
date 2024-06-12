@@ -83,7 +83,7 @@ const RenderField = (
               setCheckboxCount((checkboxCount) => checkboxCount + 1)
             }
           >
-            Add more options
+            Add more checkbox
           </div>
           {[...Array(checkboxCount)].map((_, checkboxIndex) => (
             <div key={checkboxIndex} className="flex items-center mb-2">
