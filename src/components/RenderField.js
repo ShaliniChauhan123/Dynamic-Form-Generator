@@ -165,7 +165,7 @@ const RenderField = (
             className="cursor-pointer text-blue-500 mb-2"
             onClick={() => setRadioCount((radioCount) => radioCount + 1)}
           >
-            Add more options
+            Add more radio
           </div>
           {[...Array(radioCount)].map((_, radioIndex) => (
             <div key={radioIndex} className="flex items-center mb-2">
