@@ -2,7 +2,6 @@ import React from "react";
 
 const SubmittedDataTable = ({ data }) => {
   if (!data || data.length === 0) return null;
-  console.log("data", data);
   return (
     <div className="mt-4 p-4 bg-white rounded shadow">
       <h3 className="text-xl font-bold mb-2">Submitted Data</h3>

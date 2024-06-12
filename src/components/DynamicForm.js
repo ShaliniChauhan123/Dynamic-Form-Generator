@@ -3,12 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "@mantine/form";
 
 import FallBack from "../assets/icons/fallback";
-import {
-  addField,
-  removeField,
-  updateField,
-  resetFields,
-} from "../reducers/formReducer";
+import { addField, removeField, updateField } from "../reducers/formReducer";
 import LeftPanel from "./LeftPanel";
 import CustomForm from "./CustomForm";
 import SubmittedDataTable from "./SubmittedDataTable";
@@ -131,7 +126,6 @@ const DynamicForm = () => {
         )
       );
       setSubmittedData(fields);
-      // dispatch(resetFields());
     }
   };
 
